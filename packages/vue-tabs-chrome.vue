@@ -4,7 +4,7 @@
       .tabs-divider(
         v-for="i in tabs.length"
         :key="i"
-        :style="{ left: (tabWidth - gap * 2) * i + gap + 'px' }"
+        :style="{ left: (tabWidth - gap * 2) * i + gap + 100 + 'px' }"
       )
       .tabs-item(
         v-for="(tab, i) in tabs"
@@ -38,7 +38,7 @@
           ) {{ tab | tabLabelText(tabLabel, renderLabel) }}
       span.tabs-after(
         ref="after"
-        :style="{ left: (tabWidth - gap * 2) * tabs.length + gap * 2 + 'px' }"
+        :style="{ left: (tabWidth - gap * 2) * tabs.length + gap * 2 + 100 + 'px' }"
       )
         slot(name="after")
     .tabs-footer
@@ -226,7 +226,7 @@ export default {
         $el.addEventListener('mousedown', (e) => this.handlePointerDown(e, tab, i))
         $el.addEventListener('click', (e) => this.handleClick(e, tab, i))
       }
-      let x = (tabWidth - gap * 2) * i
+      let x = (tabWidth - gap * 2) * i + 100
       tab._x = x
       tab._instance.setPosition(x, 0)
       tab._instance.on('pointerDown', (e) => this.handlePointerDown(e, tab, i))
@@ -279,7 +279,7 @@ export default {
       let { tabWidth, tabs, gap } = this
       tabs.forEach((tab, i) => {
         let instance = tab._instance
-        let _x = (tabWidth - gap * 2) * i
+        let _x = (tabWidth - gap * 2) * i + 100
         tab._x = _x
         instance.setPosition(_x, 0)
       })
